@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>健康力益暢敏體驗官招募中</title>
+  <meta name="description" content="健康力益暢敏體驗官招募中，限量招募20名，免費體驗健康力益暢敏，分享你的我的餐後小儀式。" />
+  <style>
+    :root{
+      --primary:#00AEE8;
+      --primary-dark:#008CC2;
+      --primary-soft:#EAF8FD;
+      --text:#172033;
+      --muted:#667085;
+      --line:#DCEEF7;
+      --shadow:0 18px 50px rgba(0, 143, 196, .12);
+      --radius:26px;
+      --container:1120px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Noto Sans TC", "Microsoft JhengHei", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--text);
+      background:linear-gradient(180deg,#fff 0%,#f7fcff 45%,#fff 100%);
+      line-height:1.75;
+    }
+    /* 修正：button 補上 font:inherit，避免跨瀏覽器字型不繼承 */
+    button{font:inherit}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(92%, var(--container));margin:0 auto}
+    section{padding:64px 0}
+    .section-head{margin-bottom:28px}
+    .eyebrow{font-size:14px;letter-spacing:.12em;color:var(--primary-dark);font-weight:800;margin-bottom:8px;text-transform:uppercase}
+    h1,h2,h3,p{margin:0}
+    h2{font-size:clamp(28px,3.3vw,42px);line-height:1.22;letter-spacing:.02em}
+    .lead{color:var(--muted);font-size:18px;margin-top:14px;max-width:720px}
+
+    /* Hero */
+    .hero-wrap{
+      width:100%;
+      background:#fff;
+      padding:0;
+    }
+    .hero-canvas{
+      position:relative;
+      width:min(100%, 1800px);
+      /* 調整 Hero 高度：桌機不再吃滿過高版面，文字仍疊在封面圖上 */
+      aspect-ratio:1800 / 1050;
+      min-height:520px;
+      max-height:760px;
+      margin:0 auto;
+      overflow:hidden;
+      background:#f8fcff url("cover-hero.png") center / cover no-repeat;
+      isolation:isolate;
+    }
+    .hero-canvas::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(90deg, rgba(255,255,255,.94) 0%, rgba(255,255,255,.82) 31%, rgba(255,255,255,.28) 52%, rgba(255,255,255,0) 72%);
+      z-index:0;
+      pointer-events:none;
+    }
+    .hero-copy{
+      position:absolute;
+      z-index:1;
+      left:clamp(28px,7vw,130px);
+      top:clamp(36px,6vw,92px);
+      width:min(44%, 560px);
+    }
+    .hero-tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 18px;
+      border-radius:999px;
+      color:#fff;
+      background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+      font-weight:800;
+      font-size:clamp(14px,1.5vw,20px);
+      box-shadow:0 14px 32px rgba(0,174,232,.28);
+      margin-bottom:18px;
+    }
+    .hero-title{
+      font-size:clamp(34px,4.9vw,74px);
+      line-height:1.05;
+      font-weight:900;
+      letter-spacing:-.04em;
+      color:#111827;
+      margin-bottom:22px;
+    }
+    .hero-title span{color:var(--primary-dark)}
+    .hero-desc{
+      font-size:clamp(17px,1.75vw,26px);
+      line-height:1.55;
+      color:#1f2937;
+      font-weight:600;
+      margin-bottom:28px;
+    }
+    .hero-hashtag{color:var(--primary-dark);font-weight:900;white-space:nowrap}
+    .btn{
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      min-height:52px;
+      padding:0 28px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+      color:#fff;
+      font-weight:900;
+      border:0;
+      cursor:pointer;
+      transition:transform .25s ease, box-shadow .25s ease, filter .25s ease;
+      box-shadow:0 16px 32px rgba(0,174,232,.25);
+    }
+    .btn:hover{transform:translateY(-3px);box-shadow:0 20px 42px rgba(0,174,232,.34);filter:saturate(1.08)}
+
+    .intro-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:32px;align-items:center}
+    .habit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{
+      background:rgba(255,255,255,.9);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:28px;
+      box-shadow:var(--shadow);
+      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .card:hover{transform:translateY(-7px);box-shadow:0 24px 60px rgba(0,143,196,.18);border-color:#b9eafa}
+    .habit-card{text-align:center;min-height:180px;display:grid;place-items:center;gap:10px}
+    .habit-icon{font-size:46px;line-height:1}
+    .habit-card strong{font-size:22px;color:var(--primary-dark)}
+
+    .steps{background:linear-gradient(180deg,#F7FCFF 0%,#fff 100%)}
+    .step-row{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;position:relative}
+    .step-card{padding:22px 14px;text-align:center;position:relative}
+    .step-num{
+      width:54px;height:54px;margin:0 auto 12px;border-radius:50%;
+      background:linear-gradient(135deg,#fff,#dcf6ff);
+      color:var(--primary-dark);display:grid;place-items:center;font-weight:900;border:1px solid #bfeeff;
+      box-shadow:0 10px 24px rgba(0,174,232,.14)
+    }
+    .step-card h3{font-size:18px;color:#0a7caf;margin-bottom:6px}
+    .step-card p{font-size:14px;color:var(--muted);line-height:1.55}
+
+    .rewards-layout{display:grid;grid-template-columns:310px 1fr;gap:22px;align-items:stretch}
+    .main-reward{display:flex;flex-direction:column;justify-content:center;text-align:center;background:linear-gradient(180deg,#fff,#eaf9ff)}
+    .gift{font-size:46px;margin-bottom:6px}
+    .main-reward .amount{font-size:54px;line-height:1;color:var(--primary-dark);font-weight:900;letter-spacing:-.04em;margin:10px 0}
+    .special-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .special-card{text-align:center;padding:24px 14px;display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:280px}
+    .special-card .crown{font-size:28px;margin-bottom:6px}
+    .special-card strong{display:block;color:#172033;font-size:17px;margin-bottom:4px}
+    .special-card p{line-height:1.6;margin-top:8px}
+    .set-box{margin-top:18px;display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px 28px;box-shadow:var(--shadow)}
+    .set-box h3{font-size:24px;color:var(--primary-dark);margin-bottom:6px}.set-box p{color:var(--muted)}
+    .product-img{max-width:310px;margin:auto;filter:drop-shadow(0 18px 24px rgba(0,0,0,.08))}
+
+    .signup{background:linear-gradient(180deg,#fff 0%,#f3fbff 100%)}
+    .form-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:26px;align-items:start}
+    .form-note{position:sticky;top:20px}
+    .form-card{padding:28px}
+    form{display:grid;gap:16px}
+    .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    label{display:block;font-size:14px;font-weight:800;color:#344054;margin-bottom:7px}
+    input,textarea{
+      width:100%;border:1px solid #d9e8ef;background:#fff;border-radius:14px;padding:14px 15px;font:inherit;outline:none;transition:border-color .2s, box-shadow .2s;
+    }
+    textarea{min-height:92px;resize:vertical}
+    input:focus,textarea:focus{border-color:var(--primary);box-shadow:0 0 0 4px rgba(0,174,232,.12)}
+    .submit-row{display:flex;gap:14px;align-items:center;margin-top:4px;flex-wrap:wrap}.status{color:var(--muted);font-size:14px}
+
+    .schedule-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:28px;align-items:start}
+    .timeline{position:relative;padding-left:28px;display:grid;gap:18px}
+    .timeline::before{content:"";position:absolute;left:8px;top:10px;bottom:10px;width:2px;background:#bdeeff}
+    .time-item{position:relative;background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px 20px;box-shadow:0 10px 28px rgba(0,143,196,.08)}
+    .time-item::before{content:"";position:absolute;left:-26px;top:24px;width:16px;height:16px;border-radius:50%;background:var(--primary);box-shadow:0 0 0 6px #e3f8ff}
+    .time-item strong{display:block;font-size:18px;color:#0a7caf}.time-item span{color:var(--muted)}
+    .notice ul{margin:0;padding-left:20px;color:#4b5563}.notice li{margin-bottom:8px}
+    footer{padding:24px;text-align:center;background:#00aee8;color:#fff;font-weight:700}
+
+    .fade{opacity:0;transform:translateY(26px);transition:opacity .75s ease, transform .75s ease}.fade.show{opacity:1;transform:none}
+
+    @media(max-width:1024px){
+      .hero-canvas{aspect-ratio:1800 / 1200;min-height:500px;max-height:680px}
+      .hero-copy{width:50%;top:clamp(30px,6vw,76px)}
+      .intro-grid,.form-layout,.schedule-grid{grid-template-columns:1fr}.form-note{position:static}
+      .rewards-layout{grid-template-columns:1fr}.special-grid{grid-template-columns:repeat(2,1fr)}
+      .step-row{grid-template-columns:repeat(3,1fr)}
+      .set-box{grid-template-columns:1fr;text-align:center}.product-img{max-width:260px}
+    }
+    @media(max-width:768px){
+      section{padding:48px 0}.section-head{margin-bottom:20px}.lead{font-size:16px}
+      .hero-canvas{aspect-ratio:1800 / 1350;min-height:0;max-height:none;background-position:center top}
+      .hero-canvas::before{background:linear-gradient(90deg, rgba(255,255,255,.96) 0%, rgba(255,255,255,.84) 43%, rgba(255,255,255,.16) 70%, rgba(255,255,255,0) 100%)}
+      .hero-copy{left:6vw;top:6vw;width:52%}
+      .hero-tag{padding:7px 12px;margin-bottom:10px}
+      .hero-title{margin-bottom:10px;letter-spacing:-.05em}
+      .hero-desc{margin-bottom:14px;line-height:1.45}
+      .btn{min-height:44px;padding:0 18px;font-size:14px}
+      .habit-grid{grid-template-columns:1fr;gap:12px}.habit-card{min-height:auto;padding:22px}.habit-icon{font-size:38px}
+      .step-row{grid-template-columns:1fr;gap:12px}.step-card{text-align:left;display:grid;grid-template-columns:54px 1fr;gap:14px;align-items:center}.step-num{margin:0}.step-card p{font-size:13px}
+      .special-grid{grid-template-columns:1fr 1fr}.field-grid{grid-template-columns:1fr}.card{padding:22px;border-radius:22px}.main-reward .amount{font-size:44px}
+    }
+    @media(max-width:520px){
+      .hero-canvas{aspect-ratio:1800 / 1500}
+      .hero-copy{left:5.2vw;top:5.5vw;width:55%}
+      .hero-tag{font-size:11px;padding:5px 9px;margin-bottom:8px}
+      .hero-title{font-size:clamp(25px,8vw,42px)}
+      .hero-desc{font-size:clamp(12px,3.2vw,17px);margin-bottom:10px;font-weight:700}
+      .btn{min-height:36px;padding:0 13px;font-size:12px}
+      .special-grid{grid-template-columns:1fr}.submit-row .btn{width:100%}
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero-wrap" aria-label="健康力益暢敏體驗官招募中">
+      <div class="hero-canvas">
+        <!-- 修正：移除硬寫的 show，讓淡入動畫正常由 JS 觸發 -->
+        <div class="hero-copy fade">
+          <div class="hero-tag">限量招募 20 名</div>
+          <h1 class="hero-title">健康力益暢敏<br><span>體驗官招募中</span></h1>
+          <p class="hero-desc">免費體驗健康力益暢敏<br>分享你的 <span class="hero-hashtag">#我的餐後小儀式</span></p>
+          <a class="btn" href="#signup">立即報名</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade">
+      <div class="container intro-grid">
+        <div class="section-head">
+          <div class="eyebrow">About</div>
+          <h2>活動介紹</h2>
+          <p class="lead">外食、久坐、三餐不固定，是不是也成了你的生活日常？健康力誠摯邀請你加入【益暢敏體驗官計畫】，親自體驗益暢敏，並分享你的日常補給習慣與真實體驗。</p>
+        </div>
+        <div class="habit-grid">
+          <div class="card habit-card"><div><div class="habit-icon">🍽️</div><strong>外食</strong></div></div>
+          <div class="card habit-card"><div><div class="habit-icon">🪑</div><strong>久坐</strong></div></div>
+          <div class="card habit-card"><div><div class="habit-icon">⏰</div><strong>三餐不固定</strong></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="steps fade">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">How to Join</div>
+          <h2>如何參加？</h2>
+        </div>
+        <div class="step-row">
+          <div class="card step-card"><div class="step-num">1</div><div><h3>填寫報名</h3><p>填寫體驗官報名表單</p></div></div>
+          <div class="card step-card"><div class="step-num">2</div><div><h3>成功入選</h3><p>免費獲得益暢敏體驗包</p></div></div>
+          <div class="card step-card"><div class="step-num">3</div><div><h3>開始體驗</h3><p>融入你的日常生活</p></div></div>
+          <div class="card step-card"><div class="step-num">4</div><div><h3>公開分享</h3><p>於 Facebook、Instagram 或 Threads 分享心得</p></div></div>
+          <div class="card step-card"><div class="step-num">5</div><div><h3>附上照片</h3><p>附產品照片並使用指定 Hashtag<br> #健康力 #益暢敏 #我的餐後小儀式</p></div></div>
+          <div class="card step-card"><div class="step-num">6</div><div><h3>私訊小編</h3><p>提供貼文連結給小編<br>完成本次體驗官任務</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Rewards</div>
+          <h2>完成體驗任務，有機會獲得</h2>
+        </div>
+        <div class="rewards-layout">
+          <div class="card main-reward">
+            <div class="gift">🎁</div>
+            <h3>全家禮物卡</h3>
+            <div class="amount">$100</div>
+            <p>抽 5 名</p>
+          </div>
+          <div class="special-grid">
+            <div class="card special-card"><div class="crown">🏆</div><strong>最佳照片獎</strong><p>健康力人氣三寶組<br>1 名</p></div>
+            <div class="card special-card"><div class="crown">✨</div><strong>最佳創意獎</strong><p>健康力人氣三寶組<br>1 名</p></div>
+            <div class="card special-card"><div class="crown">💬</div><strong>人氣互動獎</strong><p>健康力人氣三寶組<br>1 名</p></div>
+            <div class="card special-card"><div class="crown">💙</div><strong>小編推薦獎</strong><p>健康力人氣三寶組<br>1 名</p></div>
+          </div>
+        </div>
+        <div class="set-box">
+          <div>
+            <h3>健康力人氣三寶組內容</h3>
+            <p>益暢敏 15 入 + 葉黃素 QQ 凍 14 入 + 真純淨魚油</p>
+          </div>
+          <!-- 修正：中文檔名改為英文，並補上 width/height 避免 CLS -->
+          <img class="product-img" src="product-30pack.jpg" alt="健康力益暢敏益生菌產品圖" width="310" height="310">
+        </div>
+      </div>
+    </section>
+
+    <section class="signup fade" id="signup">
+      <div class="container form-layout">
+        <div class="section-head form-note">
+          <div class="eyebrow">Sign Up</div>
+          <h2>立即報名</h2>
+          <p class="lead">想加入益暢敏體驗官計畫嗎？填寫下方報名表單，就有機會成為本次體驗官。名額有限，健康力將依報名內容進行審核與錄取。</p>
+        </div>
+        <div class="card form-card">
+          <!-- 修正：form 不使用原生 method POST 提交，由 JS fetch JSON 處理，action 保留供 JS 讀取 -->
+          <form id="signupForm" action="https://script.google.com/macros/s/AKfycbzwoApM8fLOfWHi9m2Rqi-i1B4hzRN8b9b7V7FeOxiGNeNOvLt9zR7qIA729nc_wJ_o/exec">
+            <div class="field-grid">
+              <div><label for="name">姓名 *</label><input id="name" name="name" type="text" placeholder="請輸入姓名" required></div>
+              <div><label for="phone">手機 *</label><input id="phone" name="phone" type="tel" placeholder="請輸入手機號碼" required></div>
+            </div>
+            <div class="field-grid">
+              <div><label for="email">Email *</label><input id="email" name="email" type="email" placeholder="請輸入 Email" required></div>
+              <div><label for="social">FB / IG / Threads 帳號 *</label><input id="social" name="social" type="text" placeholder="請輸入帳號連結或 ID" required></div>
+            </div>
+            <div><label for="address">收件地址 *</label><input id="address" name="address" type="text" placeholder="請輸入完整收件地址" required></div>
+            <div><label for="note">簡單說說你想參加的原因</label><textarea id="note" name="note" placeholder="例如：平常外食頻率、想分享的餐後小儀式等"></textarea></div>
+            <div class="submit-row"><button class="btn" type="submit">送出報名</button><span class="status" id="formStatus">送出表單即代表同意本活動注意事項與個資使用說明。</span></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade">
+      <div class="container schedule-grid">
+        <div>
+          <div class="section-head">
+            <div class="eyebrow">Timeline</div>
+            <h2>活動時程</h2>
+          </div>
+          <div class="timeline">
+            <div class="time-item"><strong>體驗官招募期間</strong><span>2026/6/23 至 2026/7/6 23:59</span></div>
+            <div class="time-item"><strong>入選名單公告</strong><span>2026/7/10</span></div>
+            <div class="time-item"><strong>產品寄送期間</strong><span>2026/7/17 前完成寄送</span></div>
+            <div class="time-item"><strong>體驗與發文期間</strong><span>收到產品後至 2026/7/31 23:59</span></div>
+            <div class="time-item"><strong>得獎名單公告</strong><span>2026/8/7</span></div>
+          </div>
+        </div>
+        <div class="card notice">
+          <div class="section-head"><div class="eyebrow">Notice</div><h2>注意事項</h2></div>
+          <ul>
+            <li>每人限報名一次。</li>
+            <li>體驗官名額有限，健康力保有最終錄取資格。</li>
+            <li>參加者須於指定期間內完成活動任務，方具抽獎與評選資格。</li>
+            <li>體驗心得須為本人真實體驗內容，不得抄襲、轉載或使用他人作品。</li>
+            <li>參與本活動者，同意健康力於官方網站、社群平台、電子報、廣告素材及相關行銷用途合理引用其公開分享之文字、照片及內容。</li>
+            <li>如發現使用網路圖片、盜用他人照片、虛假帳號或其他影響活動公平性之行為，健康力有權取消參加及得獎資格。</li>
+            <li>健康力保有活動內容修改、解釋及終止之權利。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>健康力關心您的健康</footer>
+
+  <script>
+    // IntersectionObserver 淡入動畫
+    const fadeEls = document.querySelectorAll('.fade');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) { entry.target.classList.add('show'); }
+      });
+    }, { threshold: 0.12 });
+    fadeEls.forEach(el => observer.observe(el));
+
+    // 修正：改用 JSON 送出，與 GAS doPost JSON.parse 對齊；欄位 key 統一為英文
+    const form = document.getElementById('signupForm');
+    const status = document.getElementById('formStatus');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.textContent = '送出中...';
+      status.textContent = '正在送出報名資料，請稍候。';
+
+      const payload = {
+        name:    document.getElementById('name').value,
+        phone:   document.getElementById('phone').value,
+        email:   document.getElementById('email').value,
+        social:  document.getElementById('social').value,
+        address: document.getElementById('address').value,
+        note:    document.getElementById('note').value,
+      };
+
+      try {
+        await fetch(form.action, {
+          method: 'POST',
+          body: JSON.stringify(payload),
+          mode: 'no-cors'
+        });
+        form.reset();
+        status.textContent = '已送出報名資料，感謝你的參與！';
+        btn.textContent = '已送出';
+      } catch (err) {
+        status.textContent = '送出時發生問題，請稍後再試。';
+        btn.disabled = false;
+        btn.textContent = '送出報名';
+      }
+    });
+  </script>
+</body>
+</html>
