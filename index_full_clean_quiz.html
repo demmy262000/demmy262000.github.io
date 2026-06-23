@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>健康力益生菌｜找到適合你的益生菌</title>
+  <style>
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Noto Sans TC","Microsoft JhengHei",Arial,sans-serif;
+      color:#263238;
+      background:#f7fcfd;
+      line-height:1.75;
+    }
+    img{width:100%;display:block}
+    a{text-decoration:none}
+    .container{width:min(1080px,100%);margin:auto;padding:0 20px}
+    .section{padding:72px 0}
+    .hero{text-align:center}
+    .hero img{width:1280px;
+    max-width:100%;
+    height:auto;
+    display:block;
+    margin:0 auto;}
+    .center{text-align:center}
+    .eyebrow{color:#00a5c8;font-weight:900;letter-spacing:.08em}
+    h1,h2,h3{line-height:1.25;margin:0}
+    h2{font-size:clamp(30px,4vw,48px);margin-top:10px}
+    .lead{max-width:820px;margin:22px auto 0;font-size:20px;font-weight:700}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      min-height:52px;padding:12px 30px;border-radius:999px;
+      background:linear-gradient(135deg,#05a8d8,#13c49a);
+      color:#fff;font-size:18px;font-weight:900;border:0;cursor:pointer;
+      box-shadow:0 10px 24px rgba(0,140,180,.22);
+      transition:.25s;
+    }
+    .btn:hover{transform:translateY(-3px)}
+    .btn.red{background:linear-gradient(135deg,#ff7a70,#ff4f5f)}
+    .btn.blue{background:linear-gradient(135deg,#069ce0,#1b75d8)}
+    .cta{margin-top:30px}
+    .grid{display:grid;gap:22px}
+    .problem-grid{grid-template-columns:repeat(3,1fr);margin-top:36px}
+    .card{
+      background:#fff;border:1px solid #d9eef2;border-radius:24px;
+      padding:28px;box-shadow:0 10px 28px rgba(0,100,140,.08);
+    }
+    .card h3{font-size:24px;color:#007fa8;margin-bottom:8px}
+    .tagline{font-size:18px;font-weight:700;color:#546e7a}
+    .note{
+      margin-top:32px;padding:20px 24px;border-radius:18px;
+      background:#e9fbff;font-size:20px;font-weight:900;text-align:center;
+    }
+    .feature-grid{grid-template-columns:repeat(4,1fr);margin-top:36px}
+    .feature-card h3{font-size:20px;color:#008caf}
+    .faq{margin-top:34px;display:grid;gap:14px}
+    .faq-item{background:#fff;border-radius:20px;border:1px solid #d9eef2;overflow:hidden}
+    .faq-q{
+      width:100%;padding:20px 24px;background:#fff;border:0;text-align:left;
+      font-size:21px;font-weight:900;color:#0088c7;cursor:pointer;
+    }
+    .faq-a{display:none;padding:0 24px 22px;font-size:18px;font-weight:700}
+    .faq-item.active .faq-a{display:block}
+    .compare-img{max-width:1150px;margin:36px auto 0;border-radius:22px;overflow:hidden}
+    .quiz-wrap{margin-top:36px;display:grid;gap:24px}
+    .quiz-card h3{font-size:22px;color:#007fa8;margin-bottom:18px}
+    .choices{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .choice{
+      border:2px solid #d8eef3;background:#fbfeff;border-radius:20px;
+      padding:18px;font-size:17px;font-weight:800;text-align:left;cursor:pointer;
+      transition:.25s;
+    }
+    .choice:hover{transform:translateY(-2px);border-color:#00a5c8}
+    .choice.selected-a{background:#fff1f1;border-color:#ff6b6b}
+    .choice.selected-b{background:#eef8ff;border-color:#168ee0}
+    .result{
+      display:none;margin-top:32px;background:#fff;border-radius:28px;
+      padding:34px;border:1px solid #d9eef2;box-shadow:0 12px 30px rgba(0,100,140,.1);
+    }
+    .result.show{display:block}
+    .result h3{font-size:clamp(26px,4vw,38px);color:#007fa8}
+    .tags{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+    .tag{background:#e8fbff;color:#007f99;border-radius:999px;padding:6px 14px;font-weight:900}
+    .result p{font-size:18px;font-weight:700}
+    .floating{
+      position:fixed;right:20px;bottom:20px;z-index:20;
+    }
+    .fade{opacity:0;transform:translateY(26px);transition:.7s}
+    .fade.showing{opacity:1;transform:none}
+    @media(max-width:900px){
+      .problem-grid,.feature-grid{grid-template-columns:1fr 1fr}
+      .choices{grid-template-columns:1fr}
+    }
+    @media(max-width:600px){
+      .section{padding:52px 0}
+      .problem-grid,.feature-grid{grid-template-columns:1fr}
+      .card{padding:24px}
+      .floating{left:14px;right:14px;bottom:14px}
+      .floating .btn{width:100%}
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <img src="hero01.png" alt="為什麼要吃益生菌">
+  </section>
+
+  <section class="section center fade">
+    <div class="container">
+      <div class="eyebrow">PROBIOTICS GUIDE</div>
+      <h2>你是不是有這樣的困擾？</h2>
+      <p class="lead">卡卡不順、肚子脹氣、季節性敏感，或是壓力大讓腸胃緊繃，關鍵時刻身體需要的是「好菌應援」。</p>
+
+      <div class="grid problem-grid">
+        <div class="card"><h3>卡卡不順</h3><div class="tagline">日常順暢度需要被照顧</div></div>
+        <div class="card"><h3>肚子脹氣</h3><div class="tagline">外食、少蔬果族常見困擾</div></div>
+        <div class="card"><h3>動不動就拉肚子</h3><div class="tagline">消化道穩定度需要調整</div></div>
+        <div class="card"><h3>季節性敏感</h3><div class="tagline">換季時更需要日常防護</div></div>
+        <div class="card"><h3>壓力大腸胃緊</h3><div class="tagline">高壓生活影響身體節奏</div></div>
+        <div class="card"><h3>代謝慢沒精神</h3><div class="tagline">生活作息需要重新平衡</div></div>
+      </div>
+
+      <div class="cta"><a href="#quiz" class="btn">開始找適合我的益生菌</a></div>
+    </div>
+  </section>
+
+  <section class="section fade" style="background:#fff;">
+    <div class="container center">
+      <div class="eyebrow">HOW TO CHOOSE</div>
+      <h2>如何挑選適合你的益生菌</h2>
+      <p class="lead">挑選益生菌不能只看價格高低，重點是是否真正符合你的體質與需求。</p>
+
+      <div class="grid feature-grid">
+        <div class="card feature-card"><h3>菌株具科學實證</h3><p>選擇有研究文獻支持的專利菌株。</p></div>
+        <div class="card feature-card"><h3>菌種與功效明確</h3><p>確認產品標示的功效是否符合需求。</p></div>
+        <div class="card feature-card"><h3>足夠活菌數量</h3><p>建議 20-100 億 CFU 以上。</p></div>
+        <div class="card feature-card"><h3>耐胃酸鹼性</h3><p>能耐胃酸與膽鹼，順利抵達腸道。</p></div>
+        <div class="card feature-card"><h3>複方搭配全面</h3><p>搭配益生元幫助益生菌生長。</p></div>
+        <div class="card feature-card"><h3>品質安全認證</h3><p>選擇有第三方檢驗與逐批檢驗產品。</p></div>
+        <div class="card feature-card"><h3>保存條件清楚</h3><p>注意保存方式，避免高溫潮濕。</p></div>
+        <div class="card feature-card"><h3>成分單純</h3><p>避免人工香料、色素與多餘添加。</p></div>
+      </div>
+
+      <div class="note">小提醒：每個人腸道狀況不同，建議持續補充並搭配均衡飲食與良好生活習慣。</div>
+    </div>
+  </section>
+
+  <section class="section fade">
+    <div class="container">
+      <div class="center">
+        <div class="eyebrow">Q&A</div>
+        <h2>益生菌常見問題</h2>
+      </div>
+
+      <div class="faq">
+        <div class="faq-item active"><button class="faq-q">Q1 益生菌菌數越多越好？</button><div class="faq-a">專家建議 20-100 億即可。腸道內定殖空間有限，過量菌數會影響益生菌發展。</div></div>
+        <div class="faq-item"><button class="faq-q">Q2 益生菌要空腹吃還是飯後吃？</button><div class="faq-a">依產品建議為主，多數益生菌可飯後食用，能降低胃酸影響，提高存活率。</div></div>
+        <div class="faq-item"><button class="faq-q">Q3 益生菌要吃多久才有感？</button><div class="faq-a">每人體質不同，通常持續補充 2-4 週較能感受變化，建議規律食用較佳。</div></div>
+        <div class="faq-item"><button class="faq-q">Q4 益生菌跟優酪乳一樣嗎？</button><div class="faq-a">不完全相同。優酪乳可能含益生菌，但菌數、菌種與保存方式不同，保健品通常菌株更明確。</div></div>
+        <div class="faq-item"><button class="faq-q">Q5 吃益生菌後為什麼排便變多？</button><div class="faq-a">可能是菌叢調整過程，幫助消化道蠕動與代謝，初期反應因人而異。</div></div>
+        <div class="faq-item"><button class="faq-q">Q6 益生菌需要冷藏嗎？</button><div class="faq-a">視產品而定，有些常溫保存即可；若為使活性維持最佳狀態，長期存放建議冷藏保存。</div></div>
+        <div class="faq-item"><button class="faq-q">Q7 嬰兒與孕婦可以吃嗎？</button><div class="faq-a">嬰幼兒 6 個月可食用益生菌，懷孕 3 個月可以開始食用益生菌，建議依個人狀況評估。</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section fade" style="background:#fff;">
+    <div class="container center">
+      <div class="eyebrow">PRODUCTS</div>
+      <h2>健康力雙健字號益生菌</h2>
+      <div class="compare-img">
+        <img src="products.png" alt="益暢敏益生菌與 PROTE200 膠囊益生菌比較">
+      </div>
+    </div>
+  </section>
+
+  <section class="section fade" id="quiz">
+    <div class="container">
+      <div class="center">
+        <div class="eyebrow">QUIZ</div>
+        <h2>互動測驗：找出你的命定益生菌</h2>
+      </div>
+
+      <div class="quiz-wrap">
+        <div class="card quiz-card" data-question="1">
+          <h3>Q1：觀察您或家人平常的「上廁所表現」，哪一種日常生活狀況最需要被照顧？</h3>
+          <div class="choices">
+            <button class="choice" data-type="a">🔴 A：經常覺得肚子重重的、卡卡不順暢或脹氣。</button>
+            <button class="choice" data-type="b">🔵 B：日常消化排便基本上算穩定。</button>
+          </div>
+        </div>
+
+        <div class="card quiz-card" data-question="2">
+          <h3>Q2：面對「密集人潮」或「特殊環境變化」，您最主要的防護想法是？</h3>
+          <div class="choices">
+            <button class="choice" data-type="a">🔴 A：希望維持基本日常穩定舒適，安穩度過季節交替。</button>
+            <button class="choice" data-type="b">🔵 B：想要升級防禦，由內而外建立健康防線。</button>
+          </div>
+        </div>
+
+        <div class="card quiz-card" data-question="3">
+          <h3>Q3：這份益生菌主要是為了哪一種生活型態準備的？</h3>
+          <div class="choices">
+            <button class="choice" data-type="a">🔴 A：三餐外食、少蔬果的卡卡族。</button>
+            <button class="choice" data-type="b">🔵 B：學齡孩童，或高壓熬夜的疲憊族。</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="center cta">
+        <button class="btn" id="showResult">查看我的推薦結果</button>
+      </div>
+
+      <div class="result" id="resultA">
+        <h3>🔴 您的命定款：健康力 益暢敏益生菌</h3>
+        <div class="tags">
+          <span class="tag">#雙健字號認證</span><span class="tag">#輔助調整過敏體質</span><span class="tag">#胃腸功能改善</span><span class="tag">#1000位醫師推薦</span>
+        </div>
+        <p>告別季節敏感與卡卡不順，全家人的雙效平衡首選。榮獲國家健康食品雙認證，經實驗證實有助於輔助調整過敏體質與胃腸功能改善。</p>
+        <a class="btn red" href="https://shopping.dradvice.asia/SalePage/Index/7188699" target="_blank">點我前往｜益暢敏商品頁</a>
+      </div>
+
+      <div class="result" id="resultB">
+        <h3>🔵 您的命定款：健康力 PROTE200 免疫力益生菌</h3>
+        <div class="tags">
+          <span class="tag">#雙健字號認證</span><span class="tag">#輔助調整過敏體質</span><span class="tag">#免疫調節</span><span class="tag">#專利PROTE200菌株</span>
+        </div>
+        <p>由內而外活化關鍵防護，打造強韌健康防線。適合經常身處密集環境、注重全方位防禦體質的上班族、高壓熬夜族與學齡期兒童。</p>
+        <a class="btn blue" href="https://shopping.dradvice.asia/SalePage/Index/7418875" target="_blank">點我前往｜PROTE200商品頁</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="floating">
+    <a href="#quiz" class="btn">開始測驗</a>
+  </div>
+
+  <script>
+    document.querySelectorAll(".faq-q").forEach(btn=>{
+      btn.addEventListener("click",()=>btn.parentElement.classList.toggle("active"));
+    });
+
+    const answers = {};
+    document.querySelectorAll(".choice").forEach(choice=>{
+      choice.addEventListener("click",()=>{
+        const card = choice.closest(".quiz-card");
+        const q = card.dataset.question;
+        const type = choice.dataset.type;
+        answers[q] = type;
+        card.querySelectorAll(".choice").forEach(btn=>{
+          btn.classList.remove("selected-a","selected-b");
+        });
+        choice.classList.add(type === "a" ? "selected-a" : "selected-b");
+      });
+    });
+
+    document.getElementById("showResult").addEventListener("click",()=>{
+      if(Object.keys(answers).length < 3){
+        alert("請先完成 3 題測驗，讓益生菌小雷達準確開機！");
+        return;
+      }
+      const a = Object.values(answers).filter(v=>v==="a").length;
+      const resultA = document.getElementById("resultA");
+      const resultB = document.getElementById("resultB");
+      resultA.classList.remove("show");
+      resultB.classList.remove("show");
+      const target = a >= 2 ? resultA : resultB;
+      target.classList.add("show");
+      target.scrollIntoView({behavior:"smooth",block:"center"});
+    });
+
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting) entry.target.classList.add("showing");
+      });
+    },{threshold:.15});
+    document.querySelectorAll(".fade").forEach(el=>io.observe(el));
+  </script>
+</body>
+</html>
